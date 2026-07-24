@@ -139,7 +139,9 @@ def get_camb_pk_lin(cosmo, *, nonlin=False):
         wa=cosmo['wa']
     )
 
-    cp.set_for_lmax(extra_camb_params.get("lmax", 5000))
+    cp.set_for_lmax(
+        extra_camb_params.get("lmax", 5000),
+        lens_potential_accuracy=0)
     cp.InitPower.set_params(
         As=A_s_fid,
         ns=cosmo['n_s'])
