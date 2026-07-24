@@ -35,6 +35,10 @@ def get_camb_pk_lin(cosmo, *, nonlin=False):
     except (KeyError, TypeError):
         pass
 
+    # CAMB 2.x defaults to AccuracyTarget=1. Use legacy default for behavior
+    # closer to CAMB 1.x unless explicitly overridden.
+    camb.config.AccuracyTarget = extra_camb_params.get("AccuracyTarget", 0)
+
     # z sampling from CCL parameters
     na = lib.get_pk_spline_na(cosmo.cosmo)
     status = 0
@@ -139,6 +143,7 @@ def get_camb_pk_lin(cosmo, *, nonlin=False):
         wa=cosmo['wa']
     )
 
+    # Setting lens_potential_accuracy to 0 to match CAMB v1 behavior
     cp.set_for_lmax(
         extra_camb_params.get("lmax", 5000),
         lens_potential_accuracy=0)
