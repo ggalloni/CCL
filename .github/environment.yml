@@ -15,7 +15,7 @@ dependencies:
   - pyyaml
   - numpy < 2.4  # fast-pt uses np.trapz, which is deleted in numpy 2.4
   - scipy < 1.14 # velocileptors uses functions removed in recent scipy versions
-  - camb < 2
+  - camb
   - fast-pt
   - pytest
   - pytest-cov
@@ -25,7 +25,6 @@ dependencies:
   - wheel # for classy
   - cython < 3  # for classy
   - pip:
-      - scipy<1.14
       - classy  # Note the benchmarks were generated with 2.9.4
       - isitgr  # Note the benchmarks were generated with 1.0.2
       - velocileptors @ git+https://github.com/sfschen/velocileptors
@@ -33,4 +32,3 @@ dependencies:
       - MiraTitanHMFemulator
       - dark_emulator @ git+https://github.com/DarkQuestCosmology/dark_emulator_public.git@main # Note the benchmarks were generated with 1.1.2
       - colossus
-      
